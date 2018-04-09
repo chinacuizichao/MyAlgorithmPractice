@@ -1,5 +1,7 @@
 package com.roger.algorithm.primary;
 
+import java.util.HashSet;
+
 /**
  * Created by roger on 2018/4/6.
  */
@@ -11,11 +13,16 @@ public class PrimaryTest {
         //int[] nums = { 1, 1, 2 };
         //System.out.print(removeDuplicates(nums));
 
-        int[] nums = {1, 2, 3, 4, 5, 6, 7};
-        rotateArray(nums, 3);
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(nums[i] + ",  ");
-        }
+//        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+//        rotateArray(nums, 3);
+//        for (int i = 0; i < nums.length; i++) {
+//            System.out.print(nums[i] + ",  ");
+//        }
+
+//        HashSet hashSet = new HashSet();
+//        hashSet.add(1);
+//        hashSet.add(1);
+//        System.out.print(hashSet.size());
     }
 
     /**
@@ -76,6 +83,37 @@ public class PrimaryTest {
             }
         }
         return profit;
+    }
+
+    /**
+     * 给定一个整数数组，判断是否存在重复元素。
+     * 如果任何值在数组中出现至少两次，函数应该返回 true。如果每个元素都不相同，则返回 false。
+     */
+    private static boolean containsDuplicate(int[] nums) {
+        HashSet hashSet = new HashSet();
+        for (int i = 0; i < nums.length; i++) {
+            hashSet.add(nums[i]);
+        }
+
+        if (hashSet.size() < nums.length) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /***
+     * 按位异或的3个特点:
+     (1) 0^0=0,0^1=1  0异或任何数＝任何数
+     (2) 1^0=1,1^1=0  1异或任何数－任何数取反
+     (3) 任何数异或自己＝把自己置0
+     */
+    private static int singleNumber(int[] nums) {
+        int number = 0;
+        for (int i = 0; i < nums.length; i++) {
+            number ^= nums[i];
+        }
+        return number;
     }
 
 }
