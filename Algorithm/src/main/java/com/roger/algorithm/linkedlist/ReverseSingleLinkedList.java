@@ -1,7 +1,8 @@
 package com.roger.algorithm.linkedlist;
 
 /**
- * 单链表反转
+ * 单链表反转 leetcode 206
+ * https://leetcode-cn.com/problems/reverse-linked-list/comments/
  */
 public class ReverseSingleLinkedList {
 
@@ -15,13 +16,46 @@ public class ReverseSingleLinkedList {
             size++;
         }
 
-        logLinkedList();
+        Node node = reverseList(linkedList);
+
+        logLinkedList(node);
     }
 
 
-    public static void reverse1() {
-        Node tempNode = new Node();
-//        while (linkedList.getNext() != null)
+    /**
+     * 尾递归
+     */
+    public static Node reverseRecursion(Node head) {
+
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+        // 利用栈的缓存
+        Node temp = head.getNext();
+        // 返回头节点
+        Node newHead = reverseRecursion(head.getNext());
+        // 倒序链接
+        temp.setNext(head);
+        // 将原指针断掉
+        head.setNext(null);
+
+        return newHead;
+
+    }
+
+    /**
+     * 迭代法
+     */
+    public static Node reverseList(Node head) {
+        Node pre = null;
+        Node next = null;
+        while (head != null) {
+            next = head.getNext();
+            head.setNext(pre);
+            pre = head;
+            head = next;
+        }
+        return pre;
     }
 
     // 不带哨兵
@@ -47,8 +81,8 @@ public class ReverseSingleLinkedList {
         pointer.setNext(newNode);
     }
 
-    public static void logLinkedList() {
-        Node pointer = linkedList;
+    public static void logLinkedList(Node node) {
+        Node pointer = node;
 
         if (pointer == null) {
             System.out.println(" null ");
