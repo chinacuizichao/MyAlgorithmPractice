@@ -15,6 +15,27 @@ public class Tree {
         }
 
     }
+//
+//    /**
+//     * 获取传入指定视图下的所有子视图
+//     *
+//     * @param view
+//     * @return
+//     */
+//    private List<View> getAllChildViews(View view) {
+//        List<View> allChildViews = new ArrayList<>();
+//        if (view != null && view instanceof ViewGroup) {
+//            ViewGroup vp = (ViewGroup) view;
+//            for (int i = 0; i < vp.getChildCount(); i++) {
+//                View viewChild = vp.getChildAt(i);
+//                // 添加视图
+//                allChildViews.add(viewChild);
+//                // 方法递归
+//                allChildViews.addAll(getAllChildViews(viewChild));
+//            }
+//        }
+//        return allChildViews;
+//    }
 
 
     /**

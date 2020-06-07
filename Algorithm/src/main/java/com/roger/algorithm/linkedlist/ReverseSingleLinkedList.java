@@ -16,7 +16,8 @@ public class ReverseSingleLinkedList {
             size++;
         }
 
-        Node node = reverseList(linkedList);
+//        Node node = reverseList(linkedList);
+        Node node = reverseRecursion(linkedList);
 
         logLinkedList(node);
     }
@@ -32,8 +33,10 @@ public class ReverseSingleLinkedList {
         }
         // 利用栈的缓存
         Node temp = head.getNext();
+        System.out.println("temp: --> "+temp.getData());
         // 返回头节点
         Node newHead = reverseRecursion(head.getNext());
+        System.out.println("newHead: --> "+newHead.getData());
         // 倒序链接
         temp.setNext(head);
         // 将原指针断掉
